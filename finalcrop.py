@@ -79,71 +79,11 @@ def fit_model(X_train, y_train,models):
 
 
 
-# Create a heatmap of the confusion matrix
-fig, ax = plt.subplots(figsize=(8,6))
-im = ax.imshow(conf_matrix, cmap='YlGnBu')
-
-# Add annotations to the heatmap
-for i in range(len(classes)):
-    for j in range(len(classes)):
-        text = ax.text(j, i, conf_matrix[i, j],
-                       ha="center", va="center", color="black")
-
-# Customize the plot
-ax.set_xticks(np.arange(len(classes)))
-ax.set_yticks(np.arange(len(classes)))
-ax.set_xticklabels(classes)
-ax.set_yticklabels(classes)
-ax.xaxis.set_label_position('top')
-plt.tight_layout()
-plt.title('Confusion Matrix', fontsize=20, y=1.1)
-plt.ylabel('Actual label', fontsize=15)
-plt.xlabel('Predicted label', fontsize=15)
-
-# Add a colorbar
-cbar = ax.figure.colorbar(im, ax=ax)
-cbar.ax.set_ylabel('Counts', rotation=-90, va="bottom")
-
-# Display the plot using st.pyplot()
-st.pyplot(fig)
-
-# Display the code using st.code()
-with st.echo():
-    import numpy as np
-    import matplotlib.pyplot as plt
-    
-    # Create a heatmap of the confusion matrix
-    fig, ax = plt.subplots(figsize=(8,6))
-    im = ax.imshow(conf_matrix, cmap='YlGnBu')
-
-    # Add annotations to the heatmap
-    for i in range(len(classes)):
-        for j in range(len(classes)):
-            text = ax.text(j, i, conf_matrix[i, j],
-                           ha="center", va="center", color="black")
-
-    # Customize the plot
-    ax.set_xticks(np.arange(len(classes)))
-    ax.set_yticks(np.arange(len(classes)))
-    ax.set_xticklabels(classes)
-    ax.set_yticklabels(classes)
-    ax.xaxis.set_label_position('top')
-    plt.tight_layout()
-    plt.title('Confusion Matrix', fontsize=20, y=1.1)
-    plt.ylabel('Actual label', fontsize=15)
-    plt.xlabel('Predicted label', fontsize=15)
-
-    # Add a colorbar
-    cbar = ax.figure.colorbar(im, ax=ax)
-    cbar.ax.set_ylabel('Counts', rotation=-90, va="bottom")
-
-    # Display the plot using st.pyplot()
-    st.pyplot(fig)
 
 
 
 
-'''
+
 # Performance Measure
 def classification_metrics(model, conf_matrix):
     print(f"Training Accuracy Score: {model.score(X_train, y_train) * 100:.1f}%")
@@ -158,7 +98,10 @@ def classification_metrics(model, conf_matrix):
     plt.show()
     print(classification_report(y_test, y_pred))
     classes = np.unique(y_test)
-    '''
+    
+    
+    
+  
 # ROC_AUC
 
 
