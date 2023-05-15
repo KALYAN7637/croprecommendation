@@ -75,7 +75,7 @@ def fit_model(X_train, y_train,models):
         msg = "%s: %f (%f)" % (name, cv_results.mean(), cv_results.std())
         print(msg)
         
-    return names, results
+    #return names, results
 
 
 
