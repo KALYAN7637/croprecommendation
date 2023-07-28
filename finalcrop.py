@@ -133,21 +133,23 @@ df_out = df[~((df[numeric_cols] < (Q1 - 1.5 * IQR)) | (df[numeric_cols] > (Q3 + 
 
 
 
-target ='label'
+
+target = 'label'
 X_train, X_test, y_train, y_test = read_in_and_split_data(df, target)
+
+# Train the first set of models using GetModel()
 models = GetModel()
-names,results = fit_model(X_train, y_train,models)
-ScaledModel = NormalizedModel('standard')
-name,results = fit_model(X_train, y_train, ScaledModel)
+names, results = fit_model(X_train, y_train, models)
 
+# Train the second model using StandardScaler() and LogisticRegression() in a pipeline
+ScaledModel = make_pipeline(StandardScaler(), LogisticRegression())
+name, results = fit_model(X_train, y_train, ScaledModel)
 
-pipeline = make_pipeline(StandardScaler(),  LogisticRegression())
-model = pipeline.fit(X_train, y_train)
+# Evaluate the pipeline model on the test data
+y_pred = ScaledModel.predict(X_test)
+conf_matrix = confusion_matrix(y_test, y_pred)
+classification_metrics(ScaledModel, conf_matrix)
 
-y_pred = model.predict(X_test)
-y_pred
-conf_matrix = confusion_matrix(y_test,y_pred)
-classification_metrics(pipeline, conf_matrix)
 
 
 
