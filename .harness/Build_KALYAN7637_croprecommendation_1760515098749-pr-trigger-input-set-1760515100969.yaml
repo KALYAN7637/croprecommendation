@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_KALYAN7637_croprecommendation_1760515098749-pr-trigger-input-set
+  identifier: Build_KALYAN7637_croprecommendation_1760515098749prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_KALYAN7637_croprecommendation_1760515098749
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
